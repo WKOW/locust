@@ -1,0 +1,80 @@
+INSTALATION AND QUICK START:
+
+1. brew install python@3.9
+    Check if Python 3.9 is installed on your MAC. If not - please install it
+
+2a. python3 --version
+2b. pip3 --version
+    Check python 3 and pip3 version.
+
+3. Create new project in pycharm.Set Python 3.9 as new virtualenv.
+
+4. Install locust :
+    pip3 install locust
+5. Check
+    locust --version
+6. run
+    locust -f 1_example_locust_script.py
+7. Open browser + put parameters and run first l
+    http://localhost:8089/
+
+BASIC ATTRIBUTES
+
+1. Run blueprint script
+    locust -f 2_basic_locust_blueprint.py
+ //comandline error no tasks
+2. Run corrected file (wait_time and task) + info about wait_time
+    locust -f 3_basic_locust_no_errors.py
+
+4. Run file that include host - http host
+    locust -f 4_basic_locust_host.py --host="http://newtours.demoaut.com/"
+    - command line
+    - UI
+    - in class
+
+5. Adding multiple users to script + weight atribute
+    locust -f 5_basic_locust_multiuser_weight.py
+
+5a. Locust command line
+    locus --help
+    --headless
+    -u users
+    -r --hatch -rate
+    -t --run-time
+    -logfile
+    locust -f 5_basic_locust_multiuser_weight.py -u 4 -r 2 -t 10s --headless
+    locust -f 5_basic_locust_multiuser_weight.py -u 4 -r 2 -t 10s --headless --logfile mylog.log
+
+6a. on start on stop
+    locust -f 6_basic_locust_on_start_on_stop.py -u 4 -r 2 -t 10s --headless
+
+7. test start test stop
+    locust -f 7_basic_locust_test_start_test_stop.py -u 4 -r 2 -t 10s --headless --logfile test_start_stop.log
+
+LOCUST TASKS OPERATIONS
+1. locust -f 1_locust_task_decorator_weightage.py -u 1  -r 1 -t 30s --headless --only-summary
+2. locust -f 2_locust_task_attribute_weightage.py -u 1  -r 1 -t 30s --headless --only-summary
+3. locust -f 3a_locust_task_taskset_class.py -u 1  -r 1 -t 30s --headless --only-summary
+4. locust -f 3b_locust_task_taskset_class.py -u 1  -r 1 -t 30s --headless --only-summary
+5. locust -f 4_locust_task_sequences.py -u 1 -r 1 -t 30s --headless --only-summary
+6. locust -f 5_locust_task_nesting.py -u 1 -r 1 -t 30s --headless --only-summary
+
+WORKING WITH HTTP REQUESTS
+1. locust -f 1_locust_http_get_post.py -u 1 -r 1 --only-summary
+2. locust -f 2_locust_http_response.py -u 1 -r 1 --only-summary
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

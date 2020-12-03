@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/basic_locust_01_wait.py" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/basic_locust_taskclass.py" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/basic_locust_taskclass.py" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/basic_locust_taskclass.py" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/basic_locust_weightage_02.py" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/scripts/1_basic_attributes/2_basic_locust_blueprint.py" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/scripts/1_basic_attributes/5_basic_locust_multiuser_weight.py" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/scripts/1_basic_attributes/5_basic_locust_multiuser_weight.py" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/scripts/2_tasks/1_locust_task_decorator_weightage.py" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/scripts/2_tasks/1_locust_task_decorator_weightage.py" charset="ISO-8859-1" />
+  </component>
+</project>
