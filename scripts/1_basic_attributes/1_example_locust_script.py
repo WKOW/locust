@@ -1,9 +1,18 @@
 from locust import HttpUser, task, between
 
-class QuickstartUser(HttpUser):
-    wait_time = between(5, 9)
-    host="https://api.openbrewerydb.org"
 
-    @task
-    def index_page(self):
-        self.client.get("/breweries")
+class QuickstartUser(HttpUser):
+    wait_time = between(1, 2)
+    host = "https://allegro.pl"
+
+    @task(1)
+    def getHome(self):
+        self.client.get("/dzial/dom-i-ogrod", name = "Get Home")
+
+    @task(5)
+    def getAppliances(self):
+        self.client.get("/dzial/elektronika")
+
+    @task(1)
+    def getFashion(self):
+        self.client.get("dzial/moda")

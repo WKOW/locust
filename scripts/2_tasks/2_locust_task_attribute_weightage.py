@@ -6,14 +6,6 @@ def doing_work(self):
 def doing_work_friday(self):
     print("I work on friday")
 
-@events.test_start.add_listener
-def script_start(**kwargs):
-    print("I am connecting to DB")
-
-@events.test_stop.add_listener
-def script_stop(**kwargs):
-    print("I am disconnecting from DB")
-
 class MyUser(User):
     wait_time = between(1, 2)
 

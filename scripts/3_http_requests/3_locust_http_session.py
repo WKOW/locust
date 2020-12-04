@@ -1,8 +1,8 @@
-from locust import HttpUser, SequentialTaskSet, TaskSet, task, between
+from locust import task, HttpUser, SequentialTaskSet, between
 import re
 
 
-class UserBehaviour(TaskSet):
+class UserBehaviour(SequentialTaskSet):
 
     def __init__(self, parent):
         super().__init__(parent)
@@ -33,51 +33,8 @@ class UserBehaviour(TaskSet):
                 self.viewstate = re1[0]
                 print("viewstat2" + self.viewstate)
 
-    @task(2)
-    class Agent_Lookup(SequentialTaskSet):
-        @task()
-        def select_agentlookup(self):
-            print("I am in agentlookup")
-            with self.client.get("/InsuranceWebExtJS/agent_lookup.jsf", name="select_agentlookup",
-                                 cookies={'JSESSIONID': self.parent.jsession_id,
-                                          'UserSessionFilter.sessionId':
-                                              self.parent.userfilter_session_id},
+    @task()
 
-                                 catch_response=True) as self.resA3:
-
-                if "Find an Insurance " not in self.resA3.text:
-                    self.resA3.failure("Got wrong response")
-                else:
-                    self.resA3.success()
-                    re1 = re.findall("j_id\d+:j_id\d+", self.resA3.text)
-                    self.parent.viewstate = re1[0]
-                    print(self.parent.viewstate)
-
-        @task()
-        def agent_search(self):
-            print("I am in agentlookup")
-            with self.client.post("/InsuranceWebExtJS/agent_lookup.jsf", data={"show-all": "show-all",
-                                                                               "show-all:search-all.x": "42",
-                                                                               "show-all:search-all.y": "8",
-                                                                               "javax.faces.ViewState": self.parent.viewstate},
-                                  name="search_agent",
-                                  cookies={'JSESSIONID': self.parent.jsession_id,
-                                           'UserSessionFilter.sessionId':
-                                               self.parent.userfilter_session_id},
-                                  catch_response=True) as self.resA4:
-
-                if "Insurance Agent Search Results" not in self.resA4.text:
-                    self.resA4.failure("Got wrong response")
-                    print(self.resA4.text)
-                else:
-                    self.resA4.success()
-
-        @task()
-        def stop(self):
-            print("I am stopping")
-            self.interrupt()
-
-    @task(4)
     class Autoquote(SequentialTaskSet):
 
         @task()
@@ -163,19 +120,7 @@ class UserBehaviour(TaskSet):
                 else:
                     res6.success()
 
-        @task()
-        def stop3(self):
-            print("I am stopping")
-            self.interrupt()
-
-    @task()
-    def stop2(self):
-        print("I am stopping")
-        self.interrupt()
-
-
-
 class MyUser(HttpUser):
-    wait_time = between(1, 2)
     tasks = [UserBehaviour]
+    wait_time = between(2, 4)
     host = "http://demo.borland.com"

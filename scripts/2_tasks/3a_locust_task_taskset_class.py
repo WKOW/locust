@@ -1,13 +1,5 @@
 from locust import User, TaskSet, between, events, task
 
-@events.test_start.add_listener
-def script_start(**kwargs):
-    print("I am connecting to DB")
-
-@events.test_stop.add_listener
-def script_stop(**kwargs):
-    print("I am disconnecting from DB")
-
 class UserBehaviour(TaskSet):
 
     @task(4)

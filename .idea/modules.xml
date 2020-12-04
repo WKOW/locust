@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/locust.iml" filepath="$PROJECT_DIR$/.idea/locust.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/locustBasicCourse.iml" filepath="$PROJECT_DIR$/.idea/locustBasicCourse.iml" />
     </modules>
   </component>
 </project>
