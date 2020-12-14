@@ -77,6 +77,8 @@ WORKING WITH HTTP REQUESTS
     How to handle session.
 4. #locust -f 4_locust_http_nessted_tasks.py -u 1 -r 1 --only-summary
     TODO
+5. Step load mode
+6.
 
 
 

@@ -8,10 +8,7 @@ class UserBehaviour(SequentialTaskSet):
         print(resp1.status_code)
         print(resp1.headers)
         # how to check is response is correct
-        if ("Search by Agent Name") in resp1.text:
-            resp1.success()
-        else:
-            resp1.failure("failed to launch url")
+        assert "Search by Agent Name" in resp1.text
 
     @task
     def post_all_agents(self):
@@ -21,11 +18,7 @@ class UserBehaviour(SequentialTaskSet):
         print(resp2.status_code)
         print(resp2.headers)
         # how to check if response is correct
-        if ("Here is the list of all available Agents") in resp1.text:
-            resp1.success()
-        else:
-            resp1.failure("failed to launch url")
-
+        assert "Search by Agent Name" in resp2.text
 
 class MyUser(HttpUser):
     wait_time = between(1, 2)

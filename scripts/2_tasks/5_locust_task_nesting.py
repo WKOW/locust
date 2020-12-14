@@ -12,7 +12,7 @@ class UserBehaviour(TaskSet):
         def delete_cart(self):
             print("I am delete cart")
 
-        @task(1)
+        @task(6)
         def stop(self):
             print("I am stopping")
             self.interrupt()
@@ -27,7 +27,7 @@ class UserBehaviour(TaskSet):
         def add_product(self):
             print("I am add product")
 
-        @task(1)
+        @task(6)
         def stop(self):
             print("I am stopping")
             self.interrupt()

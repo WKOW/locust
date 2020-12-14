@@ -21,7 +21,7 @@ class UserBehaviour(SequentialTaskSet):
 
         with self.client.post("/InsuranceWebExtJS/index.jsf"
                 , data={"login-form": "login-form", "login-form:email": "performance@tester.pl"
-                    , "login-form:password": "tester", "login-form:login.x": "57"
+                    , "login-form:password": "test", "login-form:login.x": "57"
                     , "login-form:login.y": "9", "javax.faces.ViewState": self.viewstate}
                 , cookies={"JSESSIONID": self.jsession_id}, name="login", catch_response=True) as res1:
             if ("Logged in") not in res1.text:
@@ -34,10 +34,9 @@ class UserBehaviour(SequentialTaskSet):
                 print("viewstat2" + self.viewstate)
 
     @task()
-
     class Autoquote(SequentialTaskSet):
 
-        @task()
+        @task(2)
         def select_autoquote(self):
             with self.client.get("/InsuranceWebExtJS/quote_auto.jsf", name="select_autoquote",
                                  cookies={'JSESSIONID': self.parent.jsession_id,
@@ -52,7 +51,7 @@ class UserBehaviour(SequentialTaskSet):
                     re1 = re.findall("j_id\d+:j_id\d+", res2.text)
                     self.parent.viewstate = re1[0]
 
-        @task()
+        @task(4)
         def getinstantquote_1(self):
             with self.client.post("/InsuranceWebExtJS/quote_auto.jsf", name="getinstantquote_1",
                                   data={"autoquote": "autoquote",
@@ -75,7 +74,7 @@ class UserBehaviour(SequentialTaskSet):
                     re1 = re.findall("j_id\d+:j_id\d+", res4.text)
                     self.parent.viewstate = re1[0]
 
-        @task()
+        @task(1)
         def getinstantquote_2(self):
             with self.client.post("/InsuranceWebExtJS/quote_auto2.jsf", name="getinstantquote_2",
                                   data={"autoquote": "autoquote",
@@ -97,8 +96,8 @@ class UserBehaviour(SequentialTaskSet):
                     re1 = re.findall("j_id\d+:j_id\d+", res5.text)
                     self.parent.viewstate = re1[0]
 
-        @task()
-        def getinstantquote(self):
+        @task(6)
+        def getinstantquote_3(self):
             with self.client.post("/InsuranceWebExtJS/quote_auto3.jsf", name="getinstantquote",
                                   data={"autoquote": "autoquote",
                                         "autoquote:year": "2008",
