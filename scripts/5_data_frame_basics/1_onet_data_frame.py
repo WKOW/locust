@@ -14,14 +14,14 @@ class MyUser(HttpUser):
     def get(self):
         # take data randomly
         df = self.df
+        print('!!!!!!!! Print dataframe')
         print(df)
-        print('!!!!!!!!')
-        df = df.sample()
-        print(df)
-        print('!!!!!!!!')
-        print('!!!!!!!!')
-        print(df.loc[df.index, 'endpoint'].values[0])
-        print(df.loc[df.index, 'name'].values[0])
+        print('!!!!!!!! Print sample row')
+        sample = df.sample()
+        print(sample)
+        print('!!!!!!!! Print values')
+        print(sample.loc[sample.index, 'endpoint'].values[0])
+        print(sample.loc[sample.index, 'name'].values[0])
 
-        self.client.get(df.loc[df.index, 'endpoint'].values[0],
-                        name=df.loc[df.index, 'name'].values[0])
+        self.client.get(sample.loc[sample.index, 'endpoint'].values[0],
+                        name=sample.loc[sample.index, 'name'].values[0])
